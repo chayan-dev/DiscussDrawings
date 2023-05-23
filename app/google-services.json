@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "478598948653",
+    "project_id": "discussdrawings",
+    "storage_bucket": "discussdrawings.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478598948653:android:882934cc5cb1368f1095a4",
+        "android_client_info": {
+          "package_name": "com.example.discussdrawings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478598948653-29sq2colbpujc4hkrdtcnjcpffub1p73.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD37rgo5y3fPKkFrofHc81xzAbCQTY0Oxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478598948653-29sq2colbpujc4hkrdtcnjcpffub1p73.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

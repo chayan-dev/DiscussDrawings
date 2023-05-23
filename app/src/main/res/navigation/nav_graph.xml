@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_graph"
+  app:startDestination="@id/drawingListFragment">
+
+  <fragment
+    android:id="@+id/drawingListFragment"
+    android:name="com.example.discussdrawings.DrawingListFragment"
+    android:label="fragment_drawing_list"
+    tools:layout="@layout/fragment_drawing_list" >
+    <action
+      android:id="@+id/action_drawingListFragment_to_addDrawingFragment"
+      app:destination="@id/addDrawingFragment" />
+    <action
+      android:id="@+id/action_drawingListFragment_to_drawingFragment"
+      app:destination="@id/drawingFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/addDrawingFragment"
+    android:name="com.example.discussdrawings.AddDrawingFragment"
+    android:label="fragment_add_drawing"
+    tools:layout="@layout/fragment_add_drawing" />
+  <fragment
+    android:id="@+id/drawingFragment"
+    android:name="com.example.discussdrawings.DrawingFragment"
+    android:label="fragment_drawing"
+    tools:layout="@layout/fragment_drawing" />
+</navigation>

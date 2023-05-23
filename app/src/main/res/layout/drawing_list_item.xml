@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <ImageView
+    android:id="@+id/thumbnail"
+    android:layout_width="170dp"
+    android:layout_height="100dp"
+    android:src="@drawable/sample_img"
+    android:scaleType="centerCrop"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    />
+
+  <TextView
+    android:id="@+id/drawing_name"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    tools:text="Drawing name"
+    android:textSize="16sp"
+    android:textColor="@color/black"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toEndOf="@id/thumbnail"
+    />
+
+  <TextView
+    android:id="@+id/added_at_tv"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:text="@string/added_at"
+    android:textSize="16sp"
+    android:textColor="@color/black"
+    app:layout_constraintTop_toBottomOf="@id/drawing_name"
+    app:layout_constraintStart_toEndOf="@id/thumbnail"
+    />
+
+  <TextView
+    android:id="@+id/markersCount"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:text="@string/markers"
+    android:textSize="16sp"
+    android:textColor="@color/black"
+    app:layout_constraintTop_toBottomOf="@id/added_at_tv"
+    app:layout_constraintStart_toEndOf="@id/thumbnail"
+    />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
