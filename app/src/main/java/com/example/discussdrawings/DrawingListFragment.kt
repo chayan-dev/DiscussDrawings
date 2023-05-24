@@ -40,10 +40,6 @@ class DrawingListFragment : Fragment() {
     return binding.root
   }
 
-  private fun openDrawing() {
-    findNavController().navigate(R.id.action_drawingListFragment_to_drawingFragment)
-  }
-
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
@@ -62,6 +58,11 @@ class DrawingListFragment : Fragment() {
 
 
   }
+
+  private fun openDrawing() {
+    findNavController().navigate(R.id.action_drawingListFragment_to_drawingFragment)
+  }
+
 
 
 }

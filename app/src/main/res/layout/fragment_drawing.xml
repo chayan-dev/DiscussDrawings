@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/outer_layout"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".DrawingFragment">
 
-  <!-- TODO: Update blank fragment layout -->
-  <TextView
+  <com.github.chrisbanes.photoview.PhotoView
+    android:id="@+id/drawing_iv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="@string/hello_blank_fragment" />
+    android:layout_height="match_parent" />
 
-</FrameLayout>
+<!--<com.example.discussdrawings.utils.PinView-->
+<!--  android:id="@+id/drawing_iv"-->
+<!--  android:layout_width="match_parent"-->
+<!--  android:layout_height="match_parent"-->
+<!--  app:layout_constraintTop_toTopOf="parent"-->
+<!--  app:layout_constraintStart_toStartOf="parent"/>-->
+
+<!--  <com.example.discussdrawings.utils.ZoomClass-->
+<!--    android:id="@+id/drawing_iv"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:src="@drawable/sample_img"-->
+<!--    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--  <RelativeLayout-->
+<!--    android:id="@+id/inner_layout"-->
+<!--    android:layout_width="0dp"-->
+<!--    android:layout_height="0dp"-->
+<!--    app:layout_constraintTop_toTopOf="@id/drawing_iv"-->
+<!--    app:layout_constraintStart_toStartOf="@id/drawing_iv"-->
+<!--    app:layout_constraintEnd_toEndOf="@id/drawing_iv"-->
+<!--    app:layout_constraintBottom_toBottomOf="@id/drawing_iv"/>-->
+
+<!--  <ImageView-->
+<!--    android:id="@+id/drawing_iv"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:src="@drawable/sample_img"-->
+<!--    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent" />-->
+
+  </RelativeLayout>
