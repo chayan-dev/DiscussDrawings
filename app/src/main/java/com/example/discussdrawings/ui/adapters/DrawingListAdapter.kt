@@ -45,9 +45,9 @@ class DrawingListAdapter(
       val drawing = getItem(position)
 
       thumbnail.loadImage(drawing.imageUrl)
-      drawingName.text = "Name: ${drawing.name}"
-      addedAtTv.text = "Added at: ${drawing.addition_time?.toString()}"
-      markersCount.text = "No. of Markers: ${drawing.markersList.size.toString()}"
+      drawingName.text = drawing.name
+      addedAtTv.text = drawing.addition_time?.toString()
+      markersCount.text = drawing.markersList.size.toString()
       root.setOnClickListener { onDrawingClicked(drawing) }
 
     }

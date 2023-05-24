@@ -11,4 +11,8 @@
   <string name="show_markers">Show Markers:</string>
   <string name="drawings">Drawings</string>
   <string name="comments">Comments</string>
+  <string name="name_drawing">Name: %1$s</string>
+  <string name="time_drawing">Added at: %1$s</string>
+  <string name="markers_drawing">No. of Markers: %1$s</string>
+  <string name="name_title">Name:</string>
 </resources>
