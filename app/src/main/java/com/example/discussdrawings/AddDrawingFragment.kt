@@ -16,6 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.discussdrawings.databinding.FragmentAddDrawingBinding
 
 
@@ -72,26 +73,13 @@ class AddDrawingFragment : Fragment() {
             binding.nameEt.text.toString(),
             image
           )
+          findNavController().popBackStack()
         }
         else{
           Toast.makeText(requireContext(),"Choose Image to proceed", Toast.LENGTH_LONG).show()
         }
       }
     }
-  }
-
-  private fun addDrawing(){
-//    val db= Firebase.firestore
-//    val drawingObj = Drawing("drawing2","13.20","", listOf(Marker("xx","yy", listOf())))
-//    db.collection("drawingTest").document("8wgErLNYLdfpvNg3npqV")
-//      .update("markersList", FieldValue.arrayUnion(Marker("","", listOf())))
-//      .addOnSuccessListener { documentReference ->
-////      Log.d("addDrawing", "DocumentSnapshot written with ID: ${documentReference.id}")
-//      Toast.makeText(requireContext(),"Document edited ",Toast.LENGTH_LONG).show()
-//    }
-//      .addOnFailureListener { e ->
-//        Log.w("addDrawing", "Error adding document", e)
-//      }
   }
 
   private fun checkPermission() {

@@ -31,7 +31,7 @@ class AddMarkerBottomSheet : BottomSheetDialogFragment(){
         binding.nameEt.error = "message cannot be empty";
       } else {
         viewModel.addNewMarker(binding.nameEt.text.toString())
-//        dismiss()
+        dismiss()
       }
     }
   }

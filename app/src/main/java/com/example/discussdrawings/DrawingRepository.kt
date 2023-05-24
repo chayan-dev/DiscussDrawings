@@ -19,4 +19,8 @@ class DrawingRepository {
 
   }
 
+  suspend fun updateMarker(currentDrawing: Drawing? ) {
+    firebaseService.updateMarker(currentDrawing)
+  }
+
 }

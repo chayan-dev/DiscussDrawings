@@ -1,6 +1,7 @@
 package com.example.discussdrawings
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,16 @@ class ViewMarkerBottomsheet : BottomSheetDialogFragment(){
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
+    binding.sendBtn.setOnClickListener {
+      if (TextUtils.isEmpty(binding.nameEt.text)) {
+        binding.nameEt.error = "message cannot be empty";
+      } else {
+        viewModel.updateMarker(binding.nameEt.text.toString())
+        binding.nameEt.text?.clear()
+        dismiss()
+      }
+    }
 
     viewModel.currentMarker.observe(viewLifecycleOwner){marker ->
       Log.d("view_marker",marker.toString())

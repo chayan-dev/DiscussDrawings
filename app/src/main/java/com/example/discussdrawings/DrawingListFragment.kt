@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -34,12 +35,8 @@ class DrawingListFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    viewModel.getAllDrawings()
 
     viewModel.allDrawingList.observe(viewLifecycleOwner){ list ->
-      list.forEach {
-        Log.d("drawinglist", it.toString())
-      }
       drawingsAdapter.submitList(list)
     }
 
@@ -47,14 +44,15 @@ class DrawingListFragment : Fragment() {
       findNavController().navigate(R.id.action_drawingListFragment_to_addDrawingFragment)
     }
 
-
+    binding.reloadBtn.setOnClickListener {
+      viewModel.getAllDrawings()
+      Toast.makeText(requireContext(),"Fetching data",Toast.LENGTH_SHORT).show()
+    }
   }
 
   private fun openDrawing(drawing: Drawing) {
     viewModel.setCurrentDrawing(drawing)
     findNavController().navigate(R.id.action_drawingListFragment_to_drawingFragment)
   }
-
-
 
 }

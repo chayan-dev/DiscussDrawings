@@ -7,6 +7,8 @@
   <string name="add_drawing">Add Drawing</string>
   <string name="choose_photo">Choose image</string>
   <string name="name">Name</string>
-  <string name="enter_message">Enter message</string>
+  <string name="enter_message">Write a comment</string>
   <string name="show_markers">Show Markers:</string>
+  <string name="drawings">Drawings</string>
+  <string name="comments">Comments</string>
 </resources>

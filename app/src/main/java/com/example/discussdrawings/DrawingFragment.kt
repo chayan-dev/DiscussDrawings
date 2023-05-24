@@ -42,7 +42,9 @@ class DrawingFragment : Fragment() {
     viewModel.currentDrawing.observe(viewLifecycleOwner){drawing ->
       binding.drawingIv.loadImage(drawing.imageUrl)
       Log.d("DrawingFrag:",drawing.markersList.toString())
-      drawing.markersList.forEach { showMarker(it) }
+      if(drawing.markersList.isNotEmpty()) {
+        drawing.markersList.forEach { showMarker(it) }
+      }
     }
 
     binding.drawingIv.setImageResource(R.drawable.sample_img)

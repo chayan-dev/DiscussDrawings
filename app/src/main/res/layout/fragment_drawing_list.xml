@@ -6,12 +6,36 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".DrawingListFragment">
 
+  <TextView
+    android:id="@+id/title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/drawings"
+    android:textSize="32sp"
+    android:textStyle="bold"
+    android:layout_margin="10dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"/>
+
+  <ImageView
+    android:id="@+id/reload_btn"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:src="@drawable/ic_load"
+    android:layout_marginEnd="16dp"
+    app:layout_constraintTop_toTopOf="@id/title"
+    app:layout_constraintBottom_toBottomOf="@id/title"
+    app:layout_constraintEnd_toEndOf="parent"/>
+
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/drawingListRv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="0dp"
     tools:listitem="@layout/drawing_list_item"
-    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="5dp"
+    android:paddingBottom="8dp"
+    app:layout_constraintTop_toBottomOf="@id/title"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"/>
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton

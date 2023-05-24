@@ -23,14 +23,26 @@ class DrawingViewModel(
   private val _currentMarker: MutableLiveData<Marker> = MutableLiveData()
   val currentMarker: LiveData<Marker> = _currentMarker
 
-  fun addDrawing(name:String,image: Uri) = viewModelScope.launch {
-    drawingRepository.addDrawing(name,image){ handleAddDrawingLoader(it)}
+  private val _loader: MutableLiveData<Boolean> = MutableLiveData(false)
+  val loader: LiveData<Boolean> = _loader
+
+  fun addDrawing(name: String, image: Uri)  {
+    _loader.value = true
+    viewModelScope.launch {
+      drawingRepository.addDrawing(name, image) { handleAddDrawingLoader(it) }
+    }
+    _loader.value = false
   }
 
-  fun getAllDrawings() = viewModelScope.launch {
-    drawingRepository.getAllDrawings { drawingList ->
-      _allDrawingsList.postValue(drawingList)
+  fun getAllDrawings() {
+    _loader.value = true
+    viewModelScope.launch {
+      drawingRepository.getAllDrawings { drawingList ->
+        _allDrawingsList.postValue(drawingList)
+      }
     }
+    _loader.value = false
+
   }
 
   fun setCurrentDrawing(drawing: Drawing) {
@@ -45,7 +57,7 @@ class DrawingViewModel(
     _currentMarker.value = marker
   }
 
-  private fun handleAddDrawingLoader(isSuccess: Boolean){
+  private fun handleAddDrawingLoader(isSuccess: Boolean) {
 
   }
 
@@ -62,13 +74,41 @@ class DrawingViewModel(
 //    }
 
     val tempDrawing = _currentDrawing.value?.markersList?.plus(_currentMarker.value)
-    if(tempDrawing!=null){ _currentDrawing.value?.markersList = tempDrawing as List<Marker>
+    if (tempDrawing != null) {
+      _currentDrawing.value?.markersList = tempDrawing as List<Marker>
       _currentDrawing.value = _currentDrawing.value
     }
 
-    Log.d("DrawingVM:",_currentMarker.value.toString())
+    Log.d("DrawingVM:", _currentMarker.value.toString())
     viewModelScope.launch {
       drawingRepository.addMarker(_currentMarker.value, _currentDrawing.value)
     }
+  }
+
+  fun updateMarker(text: String) {
+
+    val tempMarker = _currentMarker.value?.messages?.plus(text)
+    if (tempMarker != null) {
+      _currentMarker.value?.messages = tempMarker.toList()
+    }
+//    _currentDrawing.value?.markersList?.forEach {
+//      if(it.addition_time == _currentMarker.value?.addition_time){
+//        it = _currentMarker.value!!
+//    }
+
+    _currentDrawing.value?.markersList?.firstOrNull { it.addition_time == _currentMarker.value?.addition_time }?.messages =
+      _currentMarker.value?.messages!!
+
+    Log.d("update_message", _currentDrawing.value.toString())
+
+//    val matchedIndex = _currentDrawing.value?.markersList?.indexOfFirst { it.addition_time == _currentMarker.value?.addition_time }
+//    if (matchedIndex != null) {
+//      _currentDrawing.value?.markersList?.get(matchedIndex) = _currentMarker.value
+//    }
+
+    viewModelScope.launch {
+        drawingRepository.updateMarker(_currentDrawing.value)
+      }
+
   }
 }

@@ -77,4 +77,15 @@ object FirebaseService {
     }
   }
 
+  suspend fun updateMarker(currentDrawing: Drawing?) {
+    val db = Firebase.firestore
+    var drawing: Drawing?
+//    Log.d("firebaseService:","m:: ${marker.toString()}, d:: ${currentDrawing.toString()}")
+    if (currentDrawing != null) {
+      db.collection("drawingTest").document(currentDrawing.id)
+        .update("markersList", currentDrawing.markersList)
+    }
+
+  }
+
 }
