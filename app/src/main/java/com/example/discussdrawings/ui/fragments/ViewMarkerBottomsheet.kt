@@ -1,4 +1,4 @@
-package com.example.discussdrawings
+package com.example.discussdrawings.ui.fragments
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.discussdrawings.databinding.ViewMarkerBottomsheetBinding
+import com.example.discussdrawings.ui.adapters.MarkerMessageAdapter
+import com.example.discussdrawings.ui.viewmodels.DrawingViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ViewMarkerBottomsheet : BottomSheetDialogFragment(){
+class ViewMarkerBottomsheet : BottomSheetDialogFragment() {
 
   lateinit var binding: ViewMarkerBottomsheetBinding
   private val viewModel: DrawingViewModel by activityViewModels()
@@ -22,8 +24,8 @@ class ViewMarkerBottomsheet : BottomSheetDialogFragment(){
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    messageAdapter = MarkerMessageAdapter() {  }
-    binding = ViewMarkerBottomsheetBinding.inflate(inflater,container,false)
+    messageAdapter = MarkerMessageAdapter() { }
+    binding = ViewMarkerBottomsheetBinding.inflate(inflater, container, false)
     binding.messageRv.layoutManager = LinearLayoutManager(context)
     binding.messageRv.adapter = messageAdapter
     return binding.root
@@ -42,8 +44,8 @@ class ViewMarkerBottomsheet : BottomSheetDialogFragment(){
       }
     }
 
-    viewModel.currentMarker.observe(viewLifecycleOwner){marker ->
-      Log.d("view_marker",marker.toString())
+    viewModel.currentMarker.observe(viewLifecycleOwner) { marker ->
+      Log.d("view_marker", marker.toString())
       messageAdapter.submitList(marker.messages)
     }
   }

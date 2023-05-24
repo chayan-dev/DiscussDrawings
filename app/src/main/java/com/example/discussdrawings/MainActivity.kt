@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import com.example.discussdrawings.repository.DrawingRepository
+import com.example.discussdrawings.ui.viewmodels.DrawingViewModel
+import com.example.discussdrawings.ui.viewmodels.DrawingViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 

@@ -7,9 +7,9 @@
 
   <fragment
     android:id="@+id/drawingListFragment"
-    android:name="com.example.discussdrawings.DrawingListFragment"
+    android:name="com.example.discussdrawings.ui.fragments.DrawingListFragment"
     android:label="fragment_drawing_list"
-    tools:layout="@layout/fragment_drawing_list" >
+    tools:layout="@layout/fragment_drawing_list">
     <action
       android:id="@+id/action_drawingListFragment_to_addDrawingFragment"
       app:destination="@id/addDrawingFragment" />
@@ -19,12 +19,12 @@
   </fragment>
   <fragment
     android:id="@+id/addDrawingFragment"
-    android:name="com.example.discussdrawings.AddDrawingFragment"
+    android:name="com.example.discussdrawings.ui.fragments.AddDrawingFragment"
     android:label="fragment_add_drawing"
     tools:layout="@layout/fragment_add_drawing" />
   <fragment
     android:id="@+id/drawingFragment"
-    android:name="com.example.discussdrawings.DrawingFragment"
+    android:name="com.example.discussdrawings.ui.fragments.DrawingFragment"
     android:label="fragment_drawing"
     tools:layout="@layout/fragment_drawing" />
 </navigation>

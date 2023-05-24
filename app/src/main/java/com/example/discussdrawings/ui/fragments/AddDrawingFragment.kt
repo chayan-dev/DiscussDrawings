@@ -1,4 +1,4 @@
-package com.example.discussdrawings
+package com.example.discussdrawings.ui.fragments
 
 import android.Manifest
 import android.app.Activity
@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.discussdrawings.ui.viewmodels.DrawingViewModel
 import com.example.discussdrawings.databinding.FragmentAddDrawingBinding
 
 
@@ -35,16 +36,11 @@ class AddDrawingFragment : Fragment() {
     }
   private val resultGalleryLauncher =
     registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-      if(result.resultCode == Activity.RESULT_OK){
+      if (result.resultCode == Activity.RESULT_OK) {
         val data = result.data?.data
-        if(data != null){
+        if (data != null) {
           binding.drawing.setImageURI(data)
           image = data
-//          image = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-//            ImageDecoder.decodeBitmap(ImageDecoder.createSource(requireContext().contentResolver, data))
-//          } else {
-//            MediaStore.Images.Media.getBitmap(requireContext().contentResolver, data)
-//          }
         }
       }
     }
@@ -64,19 +60,17 @@ class AddDrawingFragment : Fragment() {
     binding.addPhotoBtn.setOnClickListener { checkPermission() }
 
     binding.addDrawingBtn.setOnClickListener {
-      if(TextUtils.isEmpty(binding.nameEt.text)) {
+      if (TextUtils.isEmpty(binding.nameEt.text)) {
         binding.nameEt.error = "Name cannot be empty";
-      }
-      else{
-        if(this::image.isInitialized){
+      } else {
+        if (this::image.isInitialized) {
           viewModel.addDrawing(
             binding.nameEt.text.toString(),
             image
           )
           findNavController().popBackStack()
-        }
-        else{
-          Toast.makeText(requireContext(),"Choose Image to proceed", Toast.LENGTH_LONG).show()
+        } else {
+          Toast.makeText(requireContext(), "Choose Image to proceed", Toast.LENGTH_LONG).show()
         }
       }
     }

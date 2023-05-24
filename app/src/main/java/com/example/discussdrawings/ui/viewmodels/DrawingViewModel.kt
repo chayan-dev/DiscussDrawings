@@ -1,4 +1,4 @@
-package com.example.discussdrawings
+package com.example.discussdrawings.ui.viewmodels
 
 import android.net.Uri
 import android.util.Log
@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.discussdrawings.repository.DrawingRepository
 import com.example.discussdrawings.models.Drawing
 import com.example.discussdrawings.models.Marker
 import kotlinx.coroutines.launch

@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:paddingBottom="20dp"
   android:layout_width="match_parent"
-  android:layout_height="wrap_content">
+  android:layout_height="wrap_content"
+  android:paddingBottom="20dp">
 
   <TextView
     android:id="@+id/title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="New marker"
     android:layout_marginHorizontal="20dp"
     android:layout_marginTop="20dp"
+    android:text="New marker"
+    android:textColor="@color/black"
     android:textSize="26sp"
     android:textStyle="bold"
-    android:textColor="@color/black"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent" />
 
   <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/msg_layout"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:hint="@string/enter_message"
     android:layout_margin="20dp"
-    app:layout_constraintTop_toBottomOf="@id/title"
-    app:layout_constraintStart_toStartOf="parent"
+    android:hint="@string/enter_message"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@id/send_btn"
-    app:layout_constraintBottom_toBottomOf="parent">
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/title">
+
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/name_et"
       android:layout_width="match_parent"
@@ -39,10 +40,10 @@
     android:id="@+id/send_btn"
     android:layout_width="30dp"
     android:layout_height="30dp"
-    android:src="@drawable/ic_send"
     android:layout_marginEnd="10dp"
-    app:layout_constraintTop_toTopOf="@id/msg_layout"
+    android:src="@drawable/ic_send"
     app:layout_constraintBottom_toBottomOf="@id/msg_layout"
-    app:layout_constraintEnd_toEndOf="parent"/>
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="@id/msg_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

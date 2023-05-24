@@ -1,4 +1,4 @@
-package com.example.discussdrawings
+package com.example.discussdrawings.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.discussdrawings.R
 import com.example.discussdrawings.databinding.ViewMarkerListItemBinding
 
 class MarkerMessageAdapter(
   val onMarkerClicked: (message: String) -> Unit
-): ListAdapter<String, MarkerMessageAdapter.MarkerMessageViewHolder>(
+) : ListAdapter<String, MarkerMessageAdapter.MarkerMessageViewHolder>(
   object : DiffUtil.ItemCallback<String>() {
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
       return oldItem == newItem
@@ -20,8 +21,8 @@ class MarkerMessageAdapter(
       return oldItem.toString() == newItem.toString()
     }
   }
-){
-  inner class MarkerMessageViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+) {
+  inner class MarkerMessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
   override fun onCreateViewHolder(
     parent: ViewGroup,
