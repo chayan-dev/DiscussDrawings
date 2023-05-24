@@ -12,7 +12,7 @@ data class Drawing(
   @ServerTimestamp
   val addition_time: Date? = null,
   val imageUrl: String,
-  val markersList: List<Marker>
+  var markersList: List<Marker>
 ){
   constructor() : this("","",null,"", listOf())
 }

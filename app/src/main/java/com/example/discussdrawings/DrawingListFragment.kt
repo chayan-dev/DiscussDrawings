@@ -1,25 +1,16 @@
 package com.example.discussdrawings
 
-import android.Manifest
-import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.discussdrawings.databinding.FragmentDrawingListBinding
+import com.example.discussdrawings.models.Drawing
 
 
 class DrawingListFragment : Fragment() {
@@ -33,7 +24,7 @@ class DrawingListFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View? {
     // Inflate the layout for this fragment
-    drawingsAdapter = DrawingListAdapter(){ openDrawing() }
+    drawingsAdapter = DrawingListAdapter(){ openDrawing(it) }
     binding = FragmentDrawingListBinding.inflate(inflater, container, false)
     binding.drawingListRv.layoutManager = LinearLayoutManager(context)
     binding.drawingListRv.adapter = drawingsAdapter
@@ -47,7 +38,7 @@ class DrawingListFragment : Fragment() {
 
     viewModel.allDrawingList.observe(viewLifecycleOwner){ list ->
       list.forEach {
-        Log.d("drawinglist", it.id)
+        Log.d("drawinglist", it.toString())
       }
       drawingsAdapter.submitList(list)
     }
@@ -59,7 +50,8 @@ class DrawingListFragment : Fragment() {
 
   }
 
-  private fun openDrawing() {
+  private fun openDrawing(drawing: Drawing) {
+    viewModel.setCurrentDrawing(drawing)
     findNavController().navigate(R.id.action_drawingListFragment_to_drawingFragment)
   }
 

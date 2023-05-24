@@ -2,6 +2,7 @@ package com.example.discussdrawings
 
 import android.net.Uri
 import com.example.discussdrawings.models.Drawing
+import com.example.discussdrawings.models.Marker
 
 class DrawingRepository {
 
@@ -12,5 +13,10 @@ class DrawingRepository {
 
   suspend fun getAllDrawings(callback:( drawingList: ArrayList<Drawing>) -> Unit) =
     firebaseService.getAllDrawings { callback(it) }
+
+  suspend fun addMarker(marker: Marker?, currentDrawing: Drawing?) {
+    firebaseService.addNewMarker(marker,currentDrawing)
+
+  }
 
 }

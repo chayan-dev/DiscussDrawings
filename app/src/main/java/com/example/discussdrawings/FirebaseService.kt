@@ -1,15 +1,14 @@
 package com.example.discussdrawings
 
-import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
 import com.example.discussdrawings.models.Drawing
 import com.example.discussdrawings.models.Marker
 import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import kotlin.math.log
 
 object FirebaseService {
 
@@ -67,6 +66,15 @@ object FirebaseService {
         Log.d("getAllDrawings", "Error getting documents: ", e)
         callback(drawingList)
       }
+  }
+
+  suspend fun addNewMarker(marker: Marker?, currentDrawing: Drawing?) {
+    val db = Firebase.firestore
+    Log.d("firebaseService:","m:: ${marker.toString()}, d:: ${currentDrawing.toString()}")
+    if (currentDrawing != null) {
+      db.collection("drawingTest").document(currentDrawing.id)
+        .update("markersList", FieldValue.arrayUnion(marker))
+    }
   }
 
 }
